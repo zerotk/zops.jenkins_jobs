@@ -33,7 +33,7 @@ setup(
     namespace_packages=['zops'],
     entry_points="""
         [zops.plugins]
-        req=zops.jenkins_jobs.cli:jobs
+        main=zops.jenkins_jobs.cli:main
     """,
     install_requires=[
         'zerotk.zops',

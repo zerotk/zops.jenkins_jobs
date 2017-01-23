@@ -5,12 +5,12 @@ import click
 click.disable_unicode_literals_warning = True
 
 
-@click.group()
-def jobs():
+@click.group('jenkins-jobs')
+def main():
     pass
 
 
-@jobs.command()
+@main.command()
 def create():
     """
     Create jobs.
@@ -19,4 +19,4 @@ def create():
 
 
 if __name__ == '__main__':
-    jobs()
+    main()
