@@ -9,6 +9,9 @@ import click
 click.disable_unicode_literals_warning = True
 
 
+JOBS_DIRECTORY = 'jenkins-jobs'
+JOBS_MASK = '*.yml'
+
 @click.group('jenkins-jobs')
 def main():
     pass
@@ -20,9 +23,14 @@ def create(branch):
     """
     Create jobs.
     """
-    click.echo('Jenkins-jobs create')
-    for i_filename in glob.glob('jenkins-jobs/*.yml'):
-        click.echo(i_filename)
+    click.echo('jenkins-jobs create')
+
+    if not os.path.isdir(JOBS_DIRECTORY):
+        click.echo('ERROR: {}: Jobs directory not found.'.format(JOBS_DIRECTORY))
+        return
+
+    for i_filename in glob.glob(JOBS_DIRECTORY + '/' + JOBS_MASK):
+        click.echo('INFO: {}: Generating job.'.format(i_filename))
         with _temp_file(_template(i_filename, branch=branch)) as oss:
             _jenkins_jobs('update', oss.name)
 
