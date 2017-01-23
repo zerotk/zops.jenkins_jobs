@@ -17,18 +17,18 @@ A typical projetct usinhg zops.jenkins_jobs directory would look like this:
 
 ```YAML
 - job:
-    name: {setup.name}__{git.branch}
+    name: zops.jenkins_jobs__{branch}
     project-type: pipeline
     pipeline:
       script-path: jenkins-jobs/Jenkinsfile
       scm:
         - git:
-            url: '{setup.url}'
-            credentials-id: 'c8d28ec9-5d38-49a1-8b61-30db890bbb34'
+            url: 'git@github.com:zerotk/zops.jenkins_jobs'
+            credentials-id: 'XXX-YYY'
             skip-tag: true
             wipe-workspace: false
             branches:
-              - '*/{git.branch}'
+              - '*/{branch}'
 ```
 
 * The {setup.name} and {setup.url} variable are obtained from setup.py;
