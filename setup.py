@@ -37,6 +37,7 @@ setup(
     """,
     install_requires=[
         'zerotk.zops',
+        'jenkins-job-builder==2.0.0.0b1',
         'jenkins-job-builder-pipeline==0.1',
     ],
     dependency_links=[
