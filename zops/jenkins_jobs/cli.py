@@ -44,11 +44,6 @@ def _jenkins_jobs(*args):
 
 
 def _template(filename, **kwargs):
-    import pkg_resources
-    setup = pkg_resources.require('.')
-    kwargs['setup.project_name'] = setup.project_name
-    kwargs['setup.url'] = setup.url
-
     template = open(filename, 'r').read()
     return template.format(**kwargs)
 
