@@ -23,6 +23,8 @@ def create(branch):
     """
     Create jobs.
     """
+    import os
+
     click.echo('jenkins-jobs create')
 
     if not os.path.isdir(JOBS_DIRECTORY):
