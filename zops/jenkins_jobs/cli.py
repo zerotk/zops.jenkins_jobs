@@ -12,6 +12,7 @@ click.disable_unicode_literals_warning = True
 JOBS_DIRECTORY = 'jenkins-jobs'
 JOBS_MASK = '*.yml'
 
+
 @click.group('jenkins-jobs')
 def main():
     pass
