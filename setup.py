@@ -37,12 +37,10 @@ setup(
     """,
     install_requires=[
         'zerotk.zops',
+        'zerotk.jenkins-job-builder-pipeline==0.1.0',
         'jenkins-job-builder==2.0.0.0b1',
-        'jenkins-job-builder-pipeline==0.1',
     ],
-    dependency_links=[
-        'https://github.com/rusty-dev/jenkins-job-builder-pipeline/tarball/master#egg=jenkins-job-builder-pipeline-0.1',
-    ],
+    dependency_links=[],
     setup_requires=['setuptools_scm'],
     tests_require=[],
 
