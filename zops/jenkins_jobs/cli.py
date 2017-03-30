@@ -19,8 +19,9 @@ def main():
 
 
 @main.command()
+@click.argument('filenames', nargs=-1)
 @click.option('--branch', default='master', help='The job branch.')
-def create(branch):
+def create(filenames, branch):
     """
     Create jobs.
     """
@@ -28,11 +29,13 @@ def create(branch):
 
     click.echo('jenkins-jobs create')
 
-    if not os.path.isdir(JOBS_DIRECTORY):
-        click.echo('ERROR: {}: Jobs directory not found.'.format(JOBS_DIRECTORY))
-        return
+    if not filenames:
+        if not os.path.isdir(JOBS_DIRECTORY):
+            click.echo('ERROR: {}: Jobs directory not found.'.format(JOBS_DIRECTORY))
+            return
+        filenames = glob.glob(JOBS_DIRECTORY + '/' + JOBS_MASK)
 
-    for i_filename in glob.glob(JOBS_DIRECTORY + '/' + JOBS_MASK):
+    for i_filename in filenames:
         click.echo('INFO: {}: Generating job.'.format(i_filename))
         with _temp_file(_template(i_filename, branch=branch)) as oss:
             _jenkins_jobs('update', oss.name)
